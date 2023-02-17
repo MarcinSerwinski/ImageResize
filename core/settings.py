@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Local apps:
     'users.apps.UsersConfig',
-
+    'images.apps.ImagesConfig',
 
     # 3rd party apps:
     'rest_framework',
