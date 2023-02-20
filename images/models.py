@@ -8,9 +8,16 @@ class Image(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     url = models.FileField(upload_to='images/', validators=[validate_images_extension])
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+class Thumbnail(models.Model):
+    image = models.ForeignKey('Image', related_name = 'thumbnails', on_delete=models.CASCADE)
+    url = models.FileField(upload_to='thumbnails')
+    height = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.url.name
